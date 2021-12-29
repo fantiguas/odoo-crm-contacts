@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="crm_inherit" model="ir.ui.view">
+                <field name="name">crm.inherit</field>
+                <field name="model">crm.lead</field>
+                <field name="inherit_id" ref="crm.crm_lead_view_form"/>   
+		<field name="arch" type="xml">
+
+			<field name="team_id" position="after">
+				<field string="Contacto" name="contacto" />
+				<field string="Distribuidor" name="distribuidor" />
+				<field string="Técnico" name="tecnico" />
+			</field>
+
+			<field name="company_id" position="after">
+				<field string="Tipo de Paquete" name="tipo_paquete" />
+				<field string="Digital" name="digital" />
+				<field string="HD" name="hd" />
+				<field string="Total(Cantidad)" name="total_cantidad" />
+                                <field string="Producto" name="producto" />
+                                <field string="Forma de Pago" name="forma_pago" />
+                                <field string="Propietario de la Tarjeta" name="propietario_tarjeta" />
+                                <field string="Tipo de Bandera" name="tipo_bandera" />
+                                <field string="Ventas Promociones" name="venta_promociones" />
+                        </field>
+
+
+
+		</field>
+        </record>
+
+	
+	  <record id="contacts_inherit" model="ir.ui.view">
+        <field name="name">contacts.inherit</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>     
+		<field name="arch" type="xml">
+
+			<field name="vat" position="after">
+				<field string="Nombre del Suscriptor" name="nombre_del_suscriptor" />
+				<p style="margin-top:-1rem;"></p>
+                <field string="Apellido Paterno" name="apellido_paterno" />
+				<field string="Apellido Materno" name="apellido_materno" />
+				
+
+				<field string="Tipo de Identificación" name="tipo_de_identificacion"/>
+				<field string="Número de Identificación" name="numero_de_identificacion"/>
+				<field string="Nombre Referencia 1" name="nombre_referencia_1"/>
+				
+				<field string="Apellido P" name="apellido_p"/>
+				<field string="Apellido M" name="apellido_m"/>
+ 	
+				<field string="Teléfono Referencia 1" name="telefono_referencia_1"/>
+				<field string="Teléfono 2 Referencia 1" name="telefono_2_referencia_1"/>
+				
+				<field string="Parentesco Referencia 1" name="parentesco_referencia_1"/>
+				<field string="Teléfono 2 Referencia 1" name="telefono_2_referencia_1"/>
+				
+				<field string="Parentesco Referencia 1" name="parentesco_referencia_1"/>
+				<field string="Nombre Referencia 2" name="nombre_referencia_2"/>
+				
+				<field string="Apellido P" name="apellido_p"/>
+				<field string="Apellido M" name="apellido_m"/>
+
+				<field string="Teléfono Referencia 2" name="telefono_referencia_2"/>
+				<field string="Teléfono 2 Referencia 2" name="telefono_2_referencia_2"/>
+				<field string="Parentesco Referencia 2" name="parentesco_referencia_2"/>
+			</field>
+
+			<field name="category_id" position="after">
+				<field string="Teléfono 1" name="telefono_1"/>
+				<field string="Teléfono 2" name="telefono_2"/>
+				<field string="Teléfono 3" name="telefono_3"/>
+			</field>
+
+        	</field>
+        </record>
+
+	<record id="testmodule_model_action" model="ir.actions.act_window">
+    		<field name="name">Test Module Action</field>
+    		<field name="res_model">testmodule.model</field>
+    		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="testmodule_tree_view" model="ir.ui.view">
+ 		<field name="name">testmodule.tree</field>
+ 		<field name="model">testmodule.model</field>
+ 		<field name="arch" type="xml">
+ 		<tree string="Tests">
+			<field name="name"/>
+			<field name="postcode"/>
+			<field name="bedrooms"/>
+			<field name="living_area"/>
+			<field name="expected_price"/>
+			<field name="selling_price"/>
+			<field name="date_availability"/>
+ 		</tree>
+ 		</field>
+	</record>
+
+	 <record id="testmodule_form_view" model="ir.ui.view">
+ 		<field name="name">testmodule.form</field>
+ 		<field name="model">testmodule.model</field>
+ 		<field name="arch" type="xml">
+	 <form string="Test">
+    		<sheet>
+        		<group>
+            			<group>
+					<field name="postcode"/>
+            			</group>
+            			<group>
+                			<field name="expected_price"/>
+				</group>
+				 <group>
+                                        <field name="date_availability"/>
+				</group>
+				<group>
+                                        <field name="selling_price"/>
+                                </group>
+				
+            			<notebook>
+					<page string="Description">
+					  <field name="description"/>
+                                                <field name="bedrooms"/>
+                                                <field name="facades"/>
+                                                <field name="garage"/>
+                                                <field name="garden"/>
+                                                <field name="garden_area"/>
+                                                <field name="garden_orientation"/>
+
+
+				 	</page>
+            			</notebook>
+        		</group>
+    		</sheet>
+	</form>
+	</field>
+	</record>
+
+	
+	<record id="testmodule_search_view" model="ir.ui.view">
+ 		<field name="name">testmodule.search</field>
+ 		<field name="model">testmodule.model</field>
+ 		<field name="arch" type="xml">
+	<search string="Test Module Filter">
+ 		<field name="name" string="Name" />
+		<field name="postcode"/>
+		<field name="expected_price"/>
+		<field name="bedrooms"/>
+		<field name="living_area"/>
+ 		<field name="facades"/>
+ 	<separator/>
+ 	<filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+ 		<group expand="1" string="Group By">
+ 	<filter string="Provider" name="provider" context="{'group_by':'name', 'residual_visible':True}"/>
+ 		</group>
+ 	</search>
+ 		</field>
+ 	</record>
+
+	
+</odoo>
